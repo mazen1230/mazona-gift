@@ -6,148 +6,24 @@
     <title>Sba7 el3asola ya Batota 💕</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #ff4d6d;
-            --bg-color: #0a0004;
-            --text-light: #ffe6ea;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-light);
-            font-family: 'Cairo', sans-serif;
-            overflow-x: hidden;
-        }
-        #login-screen {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle, #2d0010 0%, #0a0004 100%);
-            z-index: 100;
-        }
-        .login-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        #password-input {
-            padding: 15px;
-            width: 250px;
-            border-radius: 25px;
-            border: 2px solid var(--primary);
-            background: transparent;
-            color: white;
-            text-align: center;
-            font-size: 1.2rem;
-            outline: none;
-            margin-bottom: 20px;
-        }
-        #login-btn {
-            padding: 12px 35px;
-            border-radius: 25px;
-            border: none;
-            background: linear-gradient(45deg, #ff4d6d, #c9184a);
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
-        }
-        #main-screen {
-            display: none;
-            padding: 50px 20px;
-            text-align: center;
-        }
-        .name-anim {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            color: #ffb3c6;
-            margin-bottom: 20px;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #ffb3c6; }
-            to { text-shadow: 0 0 20px #ff4d6d; }
-        }
-        .img-container {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 30px;
-            border-radius: 50%;
-            border: 4px solid var(--primary);
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(255, 77, 109, 0.5);
-        }
-        .img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .msg-box {
-            background: rgba(255, 77, 109, 0.1);
-            border: 1px solid rgba(255, 77, 109, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 30px auto;
-            max-width: 600px;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .msg-box.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .timer {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .time-box {
-            background: linear-gradient(135deg, #c9184a, #590d22);
-            padding: 10px;
-            border-radius: 10px;
-            min-width: 60px;
-            font-weight: bold;
-        }
-        .time-label {
-            display: block;
-            font-size: 0.8rem;
-        }
-        #music-btn {
-            display: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: 2px solid var(--primary);
-            background: transparent;
-            color: white;
-            cursor: pointer;
-            margin: 20px auto;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .hearts-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: -1;
-        }
-        .footer {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: #777;
-        }
+        :root { --primary: #ff4d6d; --bg-color: #0a0004; --text-light: #ffe6ea; }
+        body { margin: 0; padding: 0; background-color: var(--bg-color); color: var(--text-light); font-family: 'Cairo', sans-serif; overflow-x: hidden; }
+        #login-screen { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: radial-gradient(circle, #2d0010 0%, #0a0004 100%); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .login-title { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; text-align: center; }
+        #password-input { padding: 15px; width: 250px; border-radius: 25px; border: 2px solid var(--primary); background: transparent; color: white; text-align: center; font-size: 1.2rem; outline: none; margin-bottom: 20px; }
+        #login-btn { padding: 12px 35px; border-radius: 25px; border: none; background: linear-gradient(45deg, #ff4d6d, #c9184a); color: white; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4); }
+        #main-screen { display: none; padding: 50px 20px; text-align: center; }
+        .name-anim { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: #ffb3c6; margin-bottom: 20px; animation: glow 2s infinite alternate; }
+        @keyframes glow { from { text-shadow: 0 0 10px #ffb3c6; } to { text-shadow: 0 0 20px #ff4d6d; } }
+        .img-container { width: 220px; height: 220px; margin: 0 auto 30px; border-radius: 50%; border: 4px solid var(--primary); overflow: hidden; box-shadow: 0 0 30px rgba(255, 77, 109, 0.5); }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .msg-box { background: rgba(255, 77, 109, 0.1); border: 1px solid rgba(255, 77, 109, 0.3); border-radius: 15px; padding: 20px; margin: 30px auto; max-width: 600px; font-size: 1.2rem; line-height: 1.8; opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .msg-box.show { opacity: 1; transform: translateY(0); }
+        .timer { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+        .time-box { background: linear-gradient(135deg, #c9184a, #590d22); padding: 10px; border-radius: 10px; min-width: 60px; font-weight: bold; }
+        .time-label { display: block; font-size: 0.8rem; }
+        .hearts-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+        #player { display: none; } /* إخفاء مشغل يوتيوب */
     </style>
 </head>
 <body>
@@ -155,27 +31,17 @@
     <div id="login-screen">
         <div class="login-title">Sba7 el3asola ya Batota 💕</div>
         <input type="password" id="password-input" placeholder="اكتبي الباسوورد هنا...">
-        <button id="login-btn" onclick="checkPassword()">اضغطي هنا</button>
+        <button id="login-btn" onclick="startSurprise()">اضغطي هنا</button>
         <div id="error-msg" style="color: #ff4d6d; margin-top: 10px; display: none;">الباسوورد غلط يا قلبي!</div>
     </div>
 
     <div id="main-screen">
-        <button id="music-btn" onclick="toggleMusic()">شغلي الأغنية من هنا 🎵</button>
+        <div id="player"></div> <div class="name-anim">Batota 💖</div>
+        <div class="img-container"><img src="me.jpg" alt="Batota"></div>
         
-        <div class="name-anim">Batota 💖</div>
-
-        <div class="img-container">
-            <img src="me.jpg" alt="Batota">
-        </div>
-
-        <div class="msg-box">
-            فاكره لما كنت بقولك مش فاضي بعمل تاسك؟ هو دا التاسك اللي كنت بعمله دا اجمل واحلي تاسك ل احلي بنوته ف الدنيا كلهااا 🥰
-        </div>
-
-        <div class="msg-box">
-            مدااااام مزونه بحبك من بدري اوي ومش عايز ابقا تقيل اكتر من كدا الصراحه لان مش قادر حاسس اني عايز اعترف دلوقت اوووووي. بس بجد انا بحبك وحبيت أيامي معاكي كلها وحبيت كل حاجه فيكي ملامحك المريحه ليا ودلعك ليا وخوفك وطيبتك بجد انتي غير اي حد انا عرفته ف حياتي وحقيقي محظوظ بيكي ومبسوط انك ف حياتي واتمني انك تفضلي معايا دايما ✨
-        </div>
-
+        <div class="msg-box">فاكره لما كنت بقولك مش فاضي بعمل تاسك؟ هو دا التاسك اللي كنت بعمله دا اجمل واحلي تاسك ل احلي بنوته ف الدنيا كلهااا 🥰</div>
+        <div class="msg-box">مدااااام مزونه بحبك من بدري اوي ومش عايز ابقا تقيل اكتر من كدا الصراحه لان مش قادر حاسس اني عايز اعترف دلوقت اوووووي. بس بجد انا بحبك وحبيت أيامي معاكي كلها وحبيت كل حاجه فيكي ملامحك المريحه ليا ودلعك ليا وخوفك وطيبتك بجد انتي غير اي حد انا عرفته ف حياتي وحقيقي محظوظ بيكي ومبسوط انك ف حياتي واتمني انك تفضلي معايا دايما ✨</div>
+        
         <div id="countdown-container" class="msg-box" style="background: rgba(0,0,0,0.5);">
             <h3>عيد ميلادك مش ناسيه علفكرا 😂♥️♥️</h3>
             <div class="timer">
@@ -187,37 +53,40 @@
             <h4 style="margin-top: 15px; color: #ffb3c6;">محدش بينسي عيد ميلاد بنته ♥️</h4>
         </div>
 
-        <div class="msg-box">
-            هخطبك متقلقيش بس مش لازم اقول يعني مش لازم ابين اني مدلوق مع اني مدلوق فشششششخ 😂👈🏾👉🏾
-        </div>
-
-        <div class="msg-box">
-            ربنا يخليكي ليا يمدام مزونه ويديمك نعمه ف حياتي عمري مفكر اخسرك ولا أفكر فيكي بحاجه وحشه عشان ربنا يكرمنا ونفضل سوا حقيقي انا محتاجك ف حياتي ♥️♥️♥️♥️
-        </div>
-
-        <div class="footer">
-            حقوق طبع ونشر مدام مزونه عشان متعلقش من قفايا 😂😂
-        </div>
+        <div class="msg-box">هخطبك متقلقيش بس مش لازم اقول يعني مش لازم ابين اني مدلوق مع اني مدلوق فشششششخ 😂👈🏾👉🏾</div>
+        <div class="msg-box">ربنا يخليكي ليا يمدام مزونه ويديمك نعمه ف حياتي عمري مفكر اخسرك ولا أفكر فيكي بحاجه وحشه عشان ربنا يكرمنا ونفضل سوا حقيقي انا محتاجك ف حياتي ♥️♥️♥️♥️</div>
+        <div class="footer" style="margin-top:50px; font-size:0.8rem; color:#777;">حقوق طبع ونشر مدام مزونه عشان متعلقش من قفايا 😂😂</div>
     </div>
 
     <div class="hearts-bg" id="hearts-bg"></div>
 
-    <script>
-        // استخدام رابط MP3 مباشر لضمان التشغيل على الموبايل
-        var audio = new Audio('https://www.mboxdrive.com/Amr%20Diab%20-%20Khalik%20Maaya.mp3');
-        audio.loop = true;
+    <script src="https://www.youtube.com/iframe_api"></script>
 
-        function checkPassword() {
+    <script>
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0', width: '0',
+                videoId: 'fGFB29lQ-Vs', // ID أغنية عمرو دياب
+                playerVars: { 'autoplay': 1, 'loop': 1, 'playlist': 'fGFB29lQ-Vs' },
+                events: { 'onReady': onPlayerReady }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // المشغل جاهز الآن
+        }
+
+        function startSurprise() {
             var pass = document.getElementById("password-input").value;
             if(pass === "Madam mazona") {
+                // تشغيل الأغنية فوراً عند الضغط (لأن المتصفح بيسمح بالصوت بعد تفاعل المستخدم)
+                if (player && player.playVideo) {
+                    player.playVideo();
+                }
+
                 document.getElementById("login-screen").style.display = "none";
                 document.getElementById("main-screen").style.display = "block";
-                
-                // إظهار زر الموسيقى فوراً لأن الموبايل بيحتاج ضغطة
-                document.getElementById("music-btn").style.display = "block";
-                
-                // محاولة تشغيل مبدئية
-                audio.play().catch(function(e) { console.log("Waiting for user click"); });
 
                 initAnimations();
                 startCountdown();
@@ -227,57 +96,38 @@
             }
         }
 
-        function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-                document.getElementById("music-btn").innerText = "إيقاف الموسيقى 🎵";
-            } else {
-                audio.pause();
-                document.getElementById("music-btn").innerText = "تشغيل الموسيقى 🎵";
-            }
-        }
-
         function initAnimations() {
             const boxes = document.querySelectorAll('.msg-box');
             const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('show');
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
             }, { threshold: 0.1 });
             boxes.forEach(box => observer.observe(box));
         }
 
         function startCountdown() {
-            let birthday = new Date(`July 29, ${new Date().getFullYear()} 00:00:00`).getTime();
-            if (new Date().getTime() > birthday) birthday = new Date(`July 29, ${new Date().getFullYear() + 1} 00:00:00`).getTime();
-
-            setInterval(function() {
-                let now = new Date().getTime();
-                let distance = birthday - now;
-                document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
-                document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                document.getElementById("mins").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                document.getElementById("secs").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
+            let bday = new Date(`July 29, ${new Date().getFullYear()} 00:00:00`).getTime();
+            if (new Date().getTime() > bday) bday = new Date(`July 29, ${new Date().getFullYear()+1} 00:00:00`).getTime();
+            setInterval(() => {
+                let diff = bday - new Date().getTime();
+                document.getElementById("days").innerHTML = Math.floor(diff / 86400000);
+                document.getElementById("hours").innerHTML = Math.floor((diff % 86400000) / 3600000);
+                document.getElementById("mins").innerHTML = Math.floor((diff % 3600000) / 60000);
+                document.getElementById("secs").innerHTML = Math.floor((diff % 60000) / 1000);
             }, 1000);
         }
 
         function createFloatingHearts() {
             setInterval(() => {
-                const heart = document.createElement("div");
-                heart.innerHTML = "♥️";
-                heart.style.position = "absolute";
-                heart.style.left = Math.random() * 100 + "vw";
-                heart.style.top = "100vh";
-                heart.style.color = "rgba(255, 77, 109, " + Math.random() + ")";
-                heart.style.fontSize = (Math.random() * 20 + 10) + "px";
-                heart.style.transition = "transform 5s linear, opacity 5s linear";
-                document.getElementById("hearts-bg").appendChild(heart);
-                setTimeout(() => {
-                    heart.style.transform = "translateY(-120vh) rotate(360deg)";
-                    heart.style.opacity = "0";
-                }, 100);
-                setTimeout(() => heart.remove(), 5000);
-            }, 300);
+                const h = document.createElement("div");
+                h.innerHTML = "♥️"; h.className = "hearts-bg";
+                h.style.left = Math.random() * 100 + "vw";
+                h.style.top = "100vh"; h.style.color = "rgba(255, 77, 109, "+Math.random()+")";
+                h.style.fontSize = (Math.random() * 20 + 15) + "px";
+                h.style.transition = "transform 5s linear, opacity 5s linear";
+                document.getElementById("hearts-bg").appendChild(h);
+                setTimeout(() => { h.style.transform = "translateY(-120vh) rotate(360deg)"; h.style.opacity = "0"; }, 100);
+                setTimeout(() => h.remove(), 5000);
+            }, 400);
         }
     </script>
 </body>
