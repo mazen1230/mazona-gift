@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sba7 el3asola ya Batota 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --bg-color: #0a0004;
+            --text-light: #ffe6ea;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+        }
+        /* Login Screen */
+        #login-screen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #2d0010 0%, #0a0004 100%);
+            z-index: 100;
+        }
+        .login-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(255, 77, 109, 0.5);
+        }
+        #password-input {
+            padding: 15px;
+            width: 250px;
+            border-radius: 25px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            outline: none;
+            margin-bottom: 20px;
+        }
+        #login-btn {
+            padding: 12px 35px;
+            border-radius: 25px;
+            border: none;
+            background: linear-gradient(45deg, #ff4d6d, #c9184a);
+            color: white;
+            font-size: 1.2rem;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            transition: 0.3s;
+        }
+        #login-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 25px rgba(255, 77, 109, 0.7);
+        }
+        #error-msg { color: #ff4d6d; margin-top: 10px; display: none; font-weight: bold; }
+
+        /* Main Screen */
+        #main-screen {
+            display: none;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .name-anim {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #ffb3c6;
+            margin-bottom: 30px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ffb3c6, 0 0 20px #ffb3c6; }
+            to { text-shadow: 0 0 20px #ff4d6d, 0 0 30px #ff4d6d; }
+        }
+
+        /* Image Placeholder */
+        .img-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 77, 109, 0.5);
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Messages with scroll animation */
+        .msg-box {
+            background: rgba(255, 77, 109, 0.1);
+            border: 1px solid rgba(255, 77, 109, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 600px;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .msg-box.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Countdown */
+        #countdown-container {
+            margin: 40px auto;
+        }
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .time-box {
+            background: linear-gradient(135deg, #c9184a, #590d22);
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 70px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(201, 24, 74, 0.4);
+        }
+        .time-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: normal;
+        }
+
+        /* Heart Animation Background */
+        .hearts-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: -1;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #888;
+            border-top: 1px solid #333;
+        }
+
+        /* Music Play Button (Backup) */
+        #music-btn {
+            display: none; /* مخفي افتراضيًا */
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            background: rgba(255, 77, 109, 0.3);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-family: 'Cairo', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="login-title">Sba7 el3asola ya Batota 💕</div>
+        <input type="password" id="password-input" placeholder="اكتبي الباسوورد هنا...">
+        <button id="login-btn" onclick="checkPassword()">اضغطي هنا</button>
+        <div id="error-msg">الباسوورد غلط يا قلبي، جربي تاني!</div>
+    </div>
+
+    <div id="main-screen">
+        <div id="music-wrapper"></div>
+        <button id="music-btn" onclick="toggleMusic()">تشغيل/إيقاف الموسيقى 🎵</button>
+
+        <div class="name-anim">Batota 💖</div>
+
+        <div class="img-container">
+            <img src="me.jpg" alt="Batota User Selfie">
+        </div>
+
+        <div class="msg-box">
+            فاكره لما كنت بقولك مش فاضي بعمل تاسك؟ هو دا التاسك اللي كنت بعمله دا اجمل واحلي تاسك ل احلي بنوته ف الدنيا كلهااا 🥰
+        </div>
+
+        <div class="msg-box">
+            مدااااام مزونه بحبك من بدري اوي ومش عايز ابقا تقيل اكتر من كدا الصراحه لان مش قادر حاسس اني عايز اعترف دلوقت اوووووي. بس بجد انا بحبك وحبيت أيامي معاكي كلها وحبيت كل حاجه فيكي ملامحك المريحه ليا ودلعك ليا وخوفك وطيبتك بجد انتي غير اي حد انا عرفته ف حياتي وحقيقي محظوظ بيكي ومبسوط انك ف حياتي واتمني انك تفضلي معايا دايما ✨
+        </div>
+
+        <div id="countdown-container" class="msg-box" style="background: rgba(0,0,0,0.5); border-color: #ff4d6d;">
+            <h3>عيد ميلادك مش ناسيه علفكرا 😂♥️♥️</h3>
+            <div class="timer">
+                <div class="time-box"><span id="days">00</span><span class="time-label">يوم</span></div>
+                <div class="time-box"><span id="hours">00</span><span class="time-label">ساعة</span></div>
+                <div class="time-box"><span id="mins">00</span><span class="time-label">دقيقة</span></div>
+                <div class="time-box"><span id="secs">00</span><span class="time-label">ثانية</span></div>
+            </div>
+            <h4 style="margin-top: 20px; color: #ffb3c6;">محدش بينسي عيد ميلاد بنته ♥️</h4>
+        </div>
+
+        <div class="msg-box">
+            هخطبك متقلقيش بس مش لازم اقول يعني مش لازم ابين اني مدلوق مع اني مدلوق فشششششخ 😂👈🏾👉🏾
+        </div>
+
+        <div class="msg-box">
+            ربنا يخليكي ليا يمدام مزونه ويديمك نعمه ف حياتي عمري مفكر اخسرك ولا أفكر فيكي بحاجه وحشه عشان ربنا يكرمنا ونفضل سوا حقيقي انا محتاجك ف حياتي ♥️♥️♥️♥️
+        </div>
+
+        <div class="footer">
+            حقوق طبع ونشر مدام مزونه عشان متعلقش من قفايا 😂😂
+        </div>
+    </div>
+
+    <div class="hearts-bg" id="hearts-bg"></div>
+
+    <script>
+        var isMusicPlaying = false;
+        var musicIframe;
+
+        function checkPassword() {
+            var pass = document.getElementById("password-input").value;
+            // الباسوورد المطلوب
+            if(pass === "Madam mazona") {
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("main-screen").style.display = "block";
+                
+                // تشغيل الأغنية (عمرو دياب - خليك معايا) بشكل مخفي
+                var musicWrapper = document.getElementById("music-wrapper");
+                musicWrapper.innerHTML = '<iframe id="youtube-iframe" width="0" height="0" src="https://www.youtube.com/embed/fGFB29lQ-Vs?autoplay=1&loop=1&playlist=fGFB29lQ-Vs" frameborder="0" allow="autoplay; encrypted-media"></iframe>';
+                musicIframe = document.getElementById("youtube-iframe");
+                isMusicPlaying = true;
+                
+                // إظهار زر النسخ الاحتياطي لو المتصفح منع التشغيل التلقائي
+                document.getElementById("music-btn").style.display = "block"; 
+
+                // تشغيل الأنيميشن بتاع السكرول والقلوب
+                initAnimations();
+                startCountdown();
+                createFloatingHearts();
+            } else {
+                document.getElementById("error-msg").style.display = "block";
+            }
+        }
+
+        // دالة للتبديل بين تشغيل وإيقاف الموسيقى (نسخة احتياطية)
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                musicIframe.src = ""; 
+                isMusicPlaying = false;
+                document.getElementById("music-btn").innerText = "تشغيل الموسيقى 🎵";
+            } else {
+                musicIframe.src = "https://www.youtube.com/embed/fGFB29lQ-Vs?autoplay=1&loop=1&playlist=fGFB29lQ-Vs";
+                isMusicPlaying = true;
+                document.getElementById("music-btn").innerText = "إيقاف الموسيقى 🎵";
+            }
+        }
+
+        // أنيميشن ظهور الكلام تدريجياً وهي بتنزل لتحت
+        function initAnimations() {
+            const boxes = document.querySelectorAll('.msg-box');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            boxes.forEach(box => {
+                observer.observe(box);
+            });
+        }
+
+        // عداد عيد الميلاد (29 يوليو)
+        function startCountdown() {
+            let currentYear = new Date().getFullYear();
+            let birthday = new Date(`July 29, ${currentYear} 00:00:00`).getTime();
+            
+            if (new Date().getTime() > birthday) {
+                birthday = new Date(`July 29, ${currentYear + 1} 00:00:00`).getTime();
+            }
+
+            let x = setInterval(function() {
+                let now = new Date().getTime();
+                let distance = birthday - now;
+
+                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerHTML = days < 10 ? '0'+days : days;
+                document.getElementById("hours").innerHTML = hours < 10 ? '0'+hours : hours;
+                document.getElementById("mins").innerHTML = minutes < 10 ? '0'+minutes : minutes;
+                document.getElementById("secs").innerHTML = seconds < 10 ? '0'+secs : seconds;
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("countdown-container").innerHTML = "<h2>كل سنة وانتي طيبة يا أحلى بطوطة في الدنيا! 🎉♥️</h2>";
+                }
+            }, 1000);
+        }
+
+        // عمل قلوب متحركة في الخلفية
+        function createFloatingHearts() {
+            setInterval(() => {
+                const heart = document.createElement("div");
+                heart.innerHTML = "♥️";
+                heart.style.position = "absolute";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.top = "100vh";
+                heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+                heart.style.color = "rgba(255, 77, 109, " + Math.random() + ")";
+                heart.style.transition = "transform 5s linear, opacity 5s linear";
+                heart.style.opacity = "1";
+                document.getElementById("hearts-bg").appendChild(heart);
+
+                setTimeout(() => {
+                    heart.style.transform = "translateY(-120vh) rotate(" + (Math.random() * 360) + "deg)";
+                    heart.style.opacity = "0";
+                }, 100);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
