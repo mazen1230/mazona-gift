@@ -19,7 +19,6 @@
             font-family: 'Cairo', sans-serif;
             overflow-x: hidden;
         }
-        /* Login Screen */
         #login-screen {
             height: 100vh;
             display: flex;
@@ -31,11 +30,10 @@
         }
         .login-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 20px;
             text-align: center;
-            text-shadow: 0 0 15px rgba(255, 77, 109, 0.5);
         }
         #password-input {
             padding: 15px;
@@ -56,19 +54,10 @@
             background: linear-gradient(45deg, #ff4d6d, #c9184a);
             color: white;
             font-size: 1.2rem;
-            font-family: 'Cairo', sans-serif;
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
-            transition: 0.3s;
         }
-        #login-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 25px rgba(255, 77, 109, 0.7);
-        }
-        #error-msg { color: #ff4d6d; margin-top: 10px; display: none; font-weight: bold; }
-
-        /* Main Screen */
         #main-screen {
             display: none;
             padding: 50px 20px;
@@ -76,20 +65,18 @@
         }
         .name-anim {
             font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: #ffb3c6;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             animation: glow 2s ease-in-out infinite alternate;
         }
         @keyframes glow {
-            from { text-shadow: 0 0 10px #ffb3c6, 0 0 20px #ffb3c6; }
-            to { text-shadow: 0 0 20px #ff4d6d, 0 0 30px #ff4d6d; }
+            from { text-shadow: 0 0 10px #ffb3c6; }
+            to { text-shadow: 0 0 20px #ff4d6d; }
         }
-
-        /* Image Placeholder */
         .img-container {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             margin: 0 auto 30px;
             border-radius: 50%;
             border: 4px solid var(--primary);
@@ -101,8 +88,6 @@
             height: 100%;
             object-fit: cover;
         }
-
-        /* Messages with scroll animation */
         .msg-box {
             background: rgba(255, 77, 109, 0.1);
             border: 1px solid rgba(255, 77, 109, 0.3);
@@ -110,71 +95,58 @@
             padding: 20px;
             margin: 30px auto;
             max-width: 600px;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             line-height: 1.8;
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(30px);
             transition: all 0.8s ease-out;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         .msg-box.show {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Countdown */
-        #countdown-container {
-            margin: 40px auto;
-        }
         .timer {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             margin-top: 15px;
         }
         .time-box {
             background: linear-gradient(135deg, #c9184a, #590d22);
-            padding: 15px;
+            padding: 10px;
             border-radius: 10px;
-            min-width: 70px;
-            font-size: 1.5rem;
+            min-width: 60px;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(201, 24, 74, 0.4);
         }
         .time-label {
             display: block;
-            font-size: 0.9rem;
-            font-weight: normal;
+            font-size: 0.8rem;
         }
-
-        /* Heart Animation Background */
+        #music-btn {
+            display: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            margin: 20px auto;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
         .hearts-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; z-index: -1;
         }
-
-        /* Footer */
         .footer {
             margin-top: 50px;
-            padding: 20px;
-            font-size: 0.9rem;
-            color: #888;
-            border-top: 1px solid #333;
-        }
-
-        /* Music Play Button (Backup) */
-        #music-btn {
-            display: none; /* مخفي افتراضيًا */
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: none;
-            background: rgba(255, 77, 109, 0.3);
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-bottom: 20px;
-            font-family: 'Cairo', sans-serif;
+            font-size: 0.8rem;
+            color: #777;
         }
     </style>
 </head>
@@ -184,17 +156,16 @@
         <div class="login-title">Sba7 el3asola ya Batota 💕</div>
         <input type="password" id="password-input" placeholder="اكتبي الباسوورد هنا...">
         <button id="login-btn" onclick="checkPassword()">اضغطي هنا</button>
-        <div id="error-msg">الباسوورد غلط يا قلبي، جربي تاني!</div>
+        <div id="error-msg" style="color: #ff4d6d; margin-top: 10px; display: none;">الباسوورد غلط يا قلبي!</div>
     </div>
 
     <div id="main-screen">
-        <div id="music-wrapper"></div>
-        <button id="music-btn" onclick="toggleMusic()">تشغيل/إيقاف الموسيقى 🎵</button>
-
+        <button id="music-btn" onclick="toggleMusic()">شغلي الأغنية من هنا 🎵</button>
+        
         <div class="name-anim">Batota 💖</div>
 
         <div class="img-container">
-            <img src="me.jpg" alt="Batota User Selfie">
+            <img src="me.jpg" alt="Batota">
         </div>
 
         <div class="msg-box">
@@ -205,7 +176,7 @@
             مدااااام مزونه بحبك من بدري اوي ومش عايز ابقا تقيل اكتر من كدا الصراحه لان مش قادر حاسس اني عايز اعترف دلوقت اوووووي. بس بجد انا بحبك وحبيت أيامي معاكي كلها وحبيت كل حاجه فيكي ملامحك المريحه ليا ودلعك ليا وخوفك وطيبتك بجد انتي غير اي حد انا عرفته ف حياتي وحقيقي محظوظ بيكي ومبسوط انك ف حياتي واتمني انك تفضلي معايا دايما ✨
         </div>
 
-        <div id="countdown-container" class="msg-box" style="background: rgba(0,0,0,0.5); border-color: #ff4d6d;">
+        <div id="countdown-container" class="msg-box" style="background: rgba(0,0,0,0.5);">
             <h3>عيد ميلادك مش ناسيه علفكرا 😂♥️♥️</h3>
             <div class="timer">
                 <div class="time-box"><span id="days">00</span><span class="time-label">يوم</span></div>
@@ -213,7 +184,7 @@
                 <div class="time-box"><span id="mins">00</span><span class="time-label">دقيقة</span></div>
                 <div class="time-box"><span id="secs">00</span><span class="time-label">ثانية</span></div>
             </div>
-            <h4 style="margin-top: 20px; color: #ffb3c6;">محدش بينسي عيد ميلاد بنته ♥️</h4>
+            <h4 style="margin-top: 15px; color: #ffb3c6;">محدش بينسي عيد ميلاد بنته ♥️</h4>
         </div>
 
         <div class="msg-box">
@@ -232,26 +203,22 @@
     <div class="hearts-bg" id="hearts-bg"></div>
 
     <script>
-        var isMusicPlaying = false;
-        var musicIframe;
+        // استخدام رابط MP3 مباشر لضمان التشغيل على الموبايل
+        var audio = new Audio('https://www.mboxdrive.com/Amr%20Diab%20-%20Khalik%20Maaya.mp3');
+        audio.loop = true;
 
         function checkPassword() {
             var pass = document.getElementById("password-input").value;
-            // الباسوورد المطلوب
             if(pass === "Madam mazona") {
                 document.getElementById("login-screen").style.display = "none";
                 document.getElementById("main-screen").style.display = "block";
                 
-                // تشغيل الأغنية (عمرو دياب - خليك معايا) بشكل مخفي
-                var musicWrapper = document.getElementById("music-wrapper");
-                musicWrapper.innerHTML = '<iframe id="youtube-iframe" width="0" height="0" src="https://www.youtube.com/embed/fGFB29lQ-Vs?autoplay=1&loop=1&playlist=fGFB29lQ-Vs" frameborder="0" allow="autoplay; encrypted-media"></iframe>';
-                musicIframe = document.getElementById("youtube-iframe");
-                isMusicPlaying = true;
+                // إظهار زر الموسيقى فوراً لأن الموبايل بيحتاج ضغطة
+                document.getElementById("music-btn").style.display = "block";
                 
-                // إظهار زر النسخ الاحتياطي لو المتصفح منع التشغيل التلقائي
-                document.getElementById("music-btn").style.display = "block"; 
+                // محاولة تشغيل مبدئية
+                audio.play().catch(function(e) { console.log("Waiting for user click"); });
 
-                // تشغيل الأنيميشن بتاع السكرول والقلوب
                 initAnimations();
                 startCountdown();
                 createFloatingHearts();
@@ -260,66 +227,40 @@
             }
         }
 
-        // دالة للتبديل بين تشغيل وإيقاف الموسيقى (نسخة احتياطية)
         function toggleMusic() {
-            if (isMusicPlaying) {
-                musicIframe.src = ""; 
-                isMusicPlaying = false;
-                document.getElementById("music-btn").innerText = "تشغيل الموسيقى 🎵";
-            } else {
-                musicIframe.src = "https://www.youtube.com/embed/fGFB29lQ-Vs?autoplay=1&loop=1&playlist=fGFB29lQ-Vs";
-                isMusicPlaying = true;
+            if (audio.paused) {
+                audio.play();
                 document.getElementById("music-btn").innerText = "إيقاف الموسيقى 🎵";
+            } else {
+                audio.pause();
+                document.getElementById("music-btn").innerText = "تشغيل الموسيقى 🎵";
             }
         }
 
-        // أنيميشن ظهور الكلام تدريجياً وهي بتنزل لتحت
         function initAnimations() {
             const boxes = document.querySelectorAll('.msg-box');
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('show');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('show');
                 });
             }, { threshold: 0.1 });
-
-            boxes.forEach(box => {
-                observer.observe(box);
-            });
+            boxes.forEach(box => observer.observe(box));
         }
 
-        // عداد عيد الميلاد (29 يوليو)
         function startCountdown() {
-            let currentYear = new Date().getFullYear();
-            let birthday = new Date(`July 29, ${currentYear} 00:00:00`).getTime();
-            
-            if (new Date().getTime() > birthday) {
-                birthday = new Date(`July 29, ${currentYear + 1} 00:00:00`).getTime();
-            }
+            let birthday = new Date(`July 29, ${new Date().getFullYear()} 00:00:00`).getTime();
+            if (new Date().getTime() > birthday) birthday = new Date(`July 29, ${new Date().getFullYear() + 1} 00:00:00`).getTime();
 
-            let x = setInterval(function() {
+            setInterval(function() {
                 let now = new Date().getTime();
                 let distance = birthday - now;
-
-                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById("days").innerHTML = days < 10 ? '0'+days : days;
-                document.getElementById("hours").innerHTML = hours < 10 ? '0'+hours : hours;
-                document.getElementById("mins").innerHTML = minutes < 10 ? '0'+minutes : minutes;
-                document.getElementById("secs").innerHTML = seconds < 10 ? '0'+secs : seconds;
-
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("countdown-container").innerHTML = "<h2>كل سنة وانتي طيبة يا أحلى بطوطة في الدنيا! 🎉♥️</h2>";
-                }
+                document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("mins").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("secs").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
             }, 1000);
         }
 
-        // عمل قلوب متحركة في الخلفية
         function createFloatingHearts() {
             setInterval(() => {
                 const heart = document.createElement("div");
@@ -327,20 +268,15 @@
                 heart.style.position = "absolute";
                 heart.style.left = Math.random() * 100 + "vw";
                 heart.style.top = "100vh";
-                heart.style.fontSize = (Math.random() * 20 + 10) + "px";
                 heart.style.color = "rgba(255, 77, 109, " + Math.random() + ")";
+                heart.style.fontSize = (Math.random() * 20 + 10) + "px";
                 heart.style.transition = "transform 5s linear, opacity 5s linear";
-                heart.style.opacity = "1";
                 document.getElementById("hearts-bg").appendChild(heart);
-
                 setTimeout(() => {
-                    heart.style.transform = "translateY(-120vh) rotate(" + (Math.random() * 360) + "deg)";
+                    heart.style.transform = "translateY(-120vh) rotate(360deg)";
                     heart.style.opacity = "0";
                 }, 100);
-
-                setTimeout(() => {
-                    heart.remove();
-                }, 5000);
+                setTimeout(() => heart.remove(), 5000);
             }, 300);
         }
     </script>
